@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/clinics', [ClinicController::class, 'index']);
+Route::get('/login', [UserController::class, 'login']);
+Route::get('/appointments', [AppointmentController::class, 'index']);
