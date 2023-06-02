@@ -11,11 +11,14 @@ class ClinicFactory extends Factory
 
     public function definition()
     {
+        $clinicName = strtolower($this->faker->word);
+        $domain = 'gmail.com';
+        $uniqueFakeEmail = "{$clinicName}" . "@{$domain}";
         return [
-            'name' => $this->faker->company,
+            'name' => $clinicName,
             'city' => $this->faker->city,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone_number' => $this->faker->unique()->phoneNumber,
+            'email' => $uniqueFakeEmail,
+            'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
         ];
     }
 }

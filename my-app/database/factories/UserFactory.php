@@ -13,11 +13,14 @@ class UserFactory extends Factory
 
     public function definition()
     {
+        $lastName = strtolower($this->faker->lastName);
+        $domain = 'gmail.com';
+        $uniqueFakeEmail = "{$lastName}" . $this->faker->randomNumber() . "@{$domain}";
         return [
             'name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone_number' => $this->faker->unique()->phoneNumber,
+            'last_name' => $lastName,
+            'email' => $uniqueFakeEmail,
+            'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
             'seniority' => $this->faker->numberBetween(0,10),
             'renumeration' => $this->faker->randomFloat(2, 0, 100),
             'password' => bcrypt(Str::random(10)),

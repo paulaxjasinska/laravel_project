@@ -11,11 +11,14 @@ class CustomerFactory extends Factory
 
     public function definition()
     {
+        $lastName = strtolower($this->faker->lastName);
+        $domain = 'gmail.com';
+        $uniqueFakeEmail = "{$lastName}" . $this->faker->randomNumber() . "@{$domain}";
         return [
             'name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone_number' => $this->faker->unique()->phoneNumber,
+            'email' => $uniqueFakeEmail,
+            'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
             'procedure_id' => Procedure::factory(),
         ];
     }
