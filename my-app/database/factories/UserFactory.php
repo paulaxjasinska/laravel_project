@@ -16,12 +16,15 @@ class UserFactory extends Factory
         $lastName = strtolower($this->faker->lastName);
         $domain = 'gmail.com';
         $uniqueFakeEmail = "{$lastName}" . $this->faker->randomNumber() . "@{$domain}";
+        $startDate = '2007-01-01';
+        $endDate = '2022-12-31';
+        $dateEmployment = $this->faker->dateTimeBetween($startDate, $endDate)->format('Y-m-d');
         return [
             'name' => $this->faker->firstName,
             'last_name' => $lastName,
             'email' => $uniqueFakeEmail,
             'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
-            'seniority' => $this->faker->numberBetween(0,10),
+            'date_employment' => $dateEmployment,
             'renumeration' => $this->faker->randomFloat(2, 0, 100),
             'password' => bcrypt(Str::random(10)),
             'role' => $this->faker->randomElement(['admin', 'doctor']),

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
             $table->foreignId('procedure_id')->constrained('procedures');
+            //$table->decimal('procedure_price');
             $table->timestamps();
         });
     }

@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->unique();
-            $table->integer('seniority');
+            $table->date('date_employment');
             $table->decimal('renumeration');
             $table->string('password');
             $table->string('role');
-            $table->foreignId('clinic_id')->constrained('clinics');
+            $table->foreignId('clinic_id')->constrained('clinics')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
