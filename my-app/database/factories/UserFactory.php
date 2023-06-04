@@ -26,8 +26,8 @@ class UserFactory extends Factory
             'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
             'date_employment' => $dateEmployment,
             'renumeration' => $this->faker->randomFloat(2, 0, 100),
-            'password' => bcrypt(Str::random(10)),
-            'role' => $this->faker->randomElement(['admin', 'doctor']),
+            'password' => bcrypt('doktor1234'),
+            'role' =>'doctor',
             'clinic_id' => Clinic::factory(),
             'remember_token' => Str::random(10),
         ];

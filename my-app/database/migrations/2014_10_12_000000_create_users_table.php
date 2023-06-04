@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('renumeration');
             $table->string('password');
             $table->string('role');
-            $table->foreignId('clinic_id')->constrained('clinics')->nullable();
+            $table->foreignId('clinic_id')->nullable()->constrained('clinics');
             $table->rememberToken();
             $table->timestamps();
         });

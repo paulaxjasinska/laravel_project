@@ -20,6 +20,7 @@ class CustomerFactory extends Factory
             'email' => $uniqueFakeEmail,
             'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
             'procedure_id' => Procedure::factory(),
+            'procedure_price'=>0,
         ];
     }
 }

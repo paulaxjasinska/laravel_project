@@ -25,15 +25,31 @@ class DatabaseSeeder extends Seeder
                 'clinic_id' => $clinics->random(),
             ]);
 
-            // Tworzenie 5 procedur przypisanych do losowych klinik
+            // Tworzenie 5 zabiegów przypisanych do losowych klinik
             $procedures = Procedure::factory()->count(5)->create([
                 'clinic_id' => $clinics->random(),
             ]);
 
-            // Tworzenie 7 klientów przypisanych do losowych procedur
-            $customers = Customer::factory()->count(7)->create([
+            $customers = Customer::factory()->count(5)->create([
                 'procedure_id' => $procedures->random(),
             ]);
+
+            foreach ($customers as $customer) {
+                $customer->procedure_price = $customer->procedure->price;
+                $customer->save();
+            }
+            //tworzenie administratora
+            User::create(['name' => 'admin',
+            'last_name' => 'admin',
+            'email' => 'admin',
+            'phone_number' => '000-000-000',
+            'date_employment' => now(),
+            'renumeration' => 0.00,
+            'password' => bcrypt('admin'),
+            'role' =>'admin',
+            'clinic_id' => null,
+            ]);
+
         }
     }
 
