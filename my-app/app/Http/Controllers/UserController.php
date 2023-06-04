@@ -21,7 +21,7 @@ class UserController extends Controller
         ]);
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect("/");
         }else
         {
             return back()->withErrors(['email' => 'Błędne dane'])->onlyInput('email');

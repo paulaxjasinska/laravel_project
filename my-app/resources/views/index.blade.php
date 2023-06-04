@@ -54,6 +54,9 @@
             <li>
                     Witaj {{auth()->user()->name}}
             </li>
+            @if (auth()->user()->role === 'doctor')
+               <a href="/visits"><li>Your visits</li></a>
+            @endif
             <li>
                 <form class="inline" method="POST" action="/logout">
                     @csrf
