@@ -23,8 +23,23 @@
             Treatments
           </a>
           <ul class="dropdown-menu">
+            @auth
+            <li>
+                    Witaj {{auth()->user()->name}}
+            </li>
+            <li>
+                <form class="inline" method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">
+                        Log out
+                    </button>
+                </form>
+            </li>
+            @else
             <li><a class="dropdown-item" href="/appointments">Make an appointment</a></li>
             <li><a class="dropdown-item" href="/login">Log in</a></li>
+            @endauth
+
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -41,14 +56,21 @@
 <br>
 <div class="container">
     <div class="col-4 offset-4">
-      <form class="d-flex flex-column justify-content-center">
+      <form class="d-flex flex-column justify-content-center" method="POST" action="/users/authenticate">
+        @csrf
         <div class="mb-3">
-          <label for="inputEmail3" class="col-form-label">Login</label>
-          <input type="email" class="form-control" id="inputEmail3">
+          <label for="inputEmail" class="col-form-label">E-mail</label>
+          <input type="email" class="form-control" id="inputEmail" name="email">
+          @error('email')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
         </div>
         <div class="mb-3">
-          <label for="inputPassword3" class="col-form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword3">
+          <label for="inputPassword" class="col-form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword" name="password">
+          @error('password')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
         </div>
         <div class="mb-3">
         </div>

@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/clinics', [ClinicController::class, 'index']);
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);

@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             //tworzenie administratora
             User::create(['name' => 'admin',
             'last_name' => 'admin',
-            'email' => 'admin',
+            'email' => 'admin@gmail.com',
             'phone_number' => '000-000-000',
             'date_employment' => now(),
             'renumeration' => 0.00,

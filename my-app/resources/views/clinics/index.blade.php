@@ -23,8 +23,22 @@
             Treatments
           </a>
           <ul class="dropdown-menu">
+            @auth
+            <li>
+                    Witaj {{auth()->user()->name}}
+            </li>
+            <li>
+                <form class="inline" method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">
+                        Log out
+                    </button>
+                </form>
+            </li>
+            @else
             <li><a class="dropdown-item" href="/appointments">Make an appointment</a></li>
             <li><a class="dropdown-item" href="/login">Log in</a></li>
+            @endauth
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
