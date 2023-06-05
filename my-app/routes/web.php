@@ -26,3 +26,4 @@ Route::get('/appointments', [AppointmentController::class, 'create']);
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/visits',[AppointmentController::class, 'index']);
+Route::post('/appointments', [AppointmentController::class, 'store']);

@@ -57,41 +57,35 @@
 <br>
 <br>
 
-<form class="row g-3 justify-content-center" style="overflow: hidden;">
+<form class="row g-3 justify-content-center" style="overflow: hidden;" action="/appointments" method="POST">
+    @csrf
   <div class="col-md-3">
-    <label for="inputEmail4" class="form-label">Name</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <label for="name" class="form-label">Name</label>
+    <input class="form-control" id="name" name="name">
   </div>
   <div class="col-md-3">
-    <label for="inputPassword4" class="form-label">Last name</label>
-    <input type="password" class="form-control" id="inputPassword4">
+    <label for="last_name" class="form-label">Last name</label>
+    <input class="form-control" id="last_name" name="last_name">
   </div>
   <div class="col-10 d-flex justify-content-center align-items-center">
     <div class="row">
       <div class="col-md-6">
-        <label for="inputAddress" class="form-label">Email</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="@example.com">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="@example.com" name="email">
       </div>
       <div class="col-md-6">
-        <label for="inputAddress2" class="form-label">Phone number</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="+49568247335">
+        <label for="phone_number" class="form-label">Phone number</label>
+        <input type="text" class="form-control" id="phone_number" placeholder="510-390-656" name="phone_number">
       </div>
     </div>
   </div>
   <div class="col-md-3">
-    <label for="inputCity" class="form-label">Clinic</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-3">
-    <label for="inputState" class="form-label">Procedure</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
+    <label for="procedure" class="form-label">Procedure</label>
+    <select id="procedure" class="form-select" name="procedure">
+        @foreach($procedures as $procedure)
+            <option value={{$procedure->id}}>{{$procedure->name}} ({{$procedure->price}} EUR)</option>
+        @endforeach
     </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Price</label>
-    <input type="text" class="form-control" id="inputZip">
   </div>
   <div class="col-10 d-flex justify-content-center">
     <button type="submit" class="btn btn-primary">Make an appointment</button>
