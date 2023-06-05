@@ -25,7 +25,7 @@
               <ul class="dropdown-menu">
                 @auth
                 <li>
-                        Witaj {{auth()->user()->name}}
+                        Hello {{auth()->user()->name}}
                 </li>
                 <li>
                     <form class="inline" method="POST" action="/logout">
@@ -67,36 +67,15 @@
           </tr>
         </thead>
         <tbody>
+        @foreach($appointments as $appointment)
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <td>{{$appointment->name}}</td>
+            <td>{{$appointment->last_name}}</td>
+            <td>{{$appointment->email}}</td>
+            <td>{{$appointment->phone_number}}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

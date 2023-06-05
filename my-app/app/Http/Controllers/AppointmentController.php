@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Procedure;
 use App\Models\Customer;
+use App\Models\Clinic;
 
 class AppointmentController extends Controller
 {
@@ -33,8 +34,9 @@ class AppointmentController extends Controller
     }
     public function index(){
         $user = auth()->user();
-        $appointments=$user->procedures;
-        dd($user);
-        return view('appointments.index');
+        $clinics = $user->clinic;
+        $clinic_id = $clinics->id;
+        $appointments = Procedure::where('id',$clinic_id)->get();
+        return view('appointments.index',['appointments'=>$appointments]);
     }
 }
