@@ -8,12 +8,7 @@
   </head>
   <body style="background-color: #99CCFF;" >
     <x-nav/>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
+    <div class="container" style="margin-top: 100px">
       <h3>Customers</h3>
       <br>
       <table class="table table-striped">

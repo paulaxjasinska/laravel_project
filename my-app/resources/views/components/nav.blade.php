@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light position-absolute w-100 mb-12" style="z-index:10">
+<nav class="navbar navbar-expand-lg bg-light position-absolute w-100 mb-12 top-0" style="z-index:10">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,14 +21,14 @@
           @if (auth()->user()->role === 'doctor')
              <a href="/visits" style="color: black; text-align: center;"><li>Your visits</li></a>
           @endif
-          <li>
-              <form class="inline" method="POST" action="/logout">
-                  @csrf
-                  <button type="submit" style="text-align: center;">
-                      Log out
-                  </button>
-              </form>
-          </li>
+          <li class="mt-1">
+            <form class="inline d-flex justify-content-center" method="POST" action="/logout">
+                @csrf
+                <button type="submit" style="text-align: center;">
+                    Log out
+                </button>
+            </form>
+            </li>
           @else
           <li><a class="dropdown-item" href="/appointments">Make an appointment</a></li>
           <li><a class="dropdown-item" href="/login">Log in</a></li>

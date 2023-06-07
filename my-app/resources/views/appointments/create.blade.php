@@ -14,7 +14,7 @@
   <body style="background-color: #99CCFF">
     <x-nav/>
 
-<form class="row g-3 justify-content-center" style="overflow: hidden;" action="/appointments" method="POST">
+<form class="row g-3 justify-content-center" style="overflow: hidden; margin-top: 120px" action="/appointments" method="POST">
     @csrf
   <div class="col-md-3">
     <label for="name" class="form-label">Name</label>

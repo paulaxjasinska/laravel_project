@@ -8,7 +8,7 @@
   </head>
   <body style="background-color: #99CCFF;">
     <x-nav/>
-<div class="container">
+<div class="container" style="margin-top: 100px">
     <div class="col-4 offset-4">
       <form class="d-flex flex-column justify-content-center" method="POST" action="/users/authenticate">
         @csrf

@@ -9,26 +9,27 @@
   <body style="background-color: #99CCFF;">
     <x-nav/>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-<h3 class="text-center">Our Clinics</h3>
-<br>
-<div class="d-flex justify-content-center flex-wrap">
-@foreach($clinics as $clinic)
-<div class="card m-2" style="width: 18rem;">
-  <div class="card-body">
-    <h4 class="card-title">{{$clinic->name}}</h4>
-    <p class="card-subtitle mb-2 text-muted">{{$clinic->city}}</p>
-    <p class="card-text">{{$clinic->email}}</p>
-    <p class="card-text">{{$clinic->phone_number}}</p>
-  </div>
-</div>
-@endforeach
-</div>
+    <div style="margin-top: 100px; min-height: 1000px">
+        <h3 class="text-center">Our Clinics</h3>
+        <div class="d-flex justify-content-center align-items-start flex-wrap">
+        @foreach($clinics as $clinic)
+        <div class="card m-2" style="min-height: 400px">
+        <div class="card-body">
+            <h4 class="card-title">{{$clinic->name}}</h4>
+            <p class="card-subtitle mb-2 text-muted">{{$clinic->city}}</p>
+            <p class="card-text">{{$clinic->email}}</p>
+            <p class="card-text">{{$clinic->phone_number}}</p>
+            <h3>Available procedurs</h3>
+            <ul>
+                @foreach ($clinic->procedures as $procedure)
+                    <li>{{$procedure->name}}</li>
+                @endforeach
+            </ul>
+        </div>
+        </div>
+        @endforeach
+        </div>
+    </div>
 
 <footer class="container-fluid bg-light fixed-bottom text-center pt-2">
  <div class="row text-center pt-2">         <p class="text-dark">&copy; Plastic Surgery Clinic</p>
