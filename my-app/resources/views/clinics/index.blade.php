@@ -24,8 +24,8 @@
           </a>
           <ul class="dropdown-menu">
             @auth
-            <li>
-                    Witaj {{auth()->user()->name}}
+            <li style="text-align: center;">
+                    Hello {{auth()->user()->name}}
             </li>
             <li>
                 <form class="inline" method="POST" action="/logout">

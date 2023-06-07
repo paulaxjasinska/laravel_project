@@ -24,13 +24,13 @@
               </a>
               <ul class="dropdown-menu">
                 @auth
-                <li>
+                <li style="text-align: center;">
                         Hello {{auth()->user()->name}}
                 </li>
                 <li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf
-                        <button type="submit">
+                        <button type="submit" style="justify-content: center">
                             Log out
                         </button>
                     </form>

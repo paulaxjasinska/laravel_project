@@ -51,16 +51,16 @@
               </a>
               <ul class="dropdown-menu">
                 @auth
-            <li>
-                    Witaj {{auth()->user()->name}}
+            <li style="text-align: center;">
+                    Hello {{auth()->user()->name}}
             </li>
             @if (auth()->user()->role === 'doctor')
-               <a href="/visits"><li>Your visits</li></a>
+               <a href="/visits" style="color: black; text-align: center;"><li>Your visits</li></a>
             @endif
             <li>
                 <form class="inline" method="POST" action="/logout">
                     @csrf
-                    <button type="submit">
+                    <button type="submit" style="text-align: center;">
                         Log out
                     </button>
                 </form>
