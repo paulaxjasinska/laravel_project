@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Procedure;
 use App\Models\Customer;
-use App\Models\Clinic;
 
 class AppointmentController extends Controller
 {
@@ -38,5 +37,10 @@ class AppointmentController extends Controller
         $procedures = $user->clinic->procedures;
 
         return view('appointments.index',['procedures'=>$procedures]);
+    }
+    public function update(Customer $customer){
+        $customer->status = "accepted";
+        $customer->update();
+        return redirect("/visits");
     }
 }

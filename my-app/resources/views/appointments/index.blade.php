@@ -62,7 +62,7 @@
             <th scope="col">Phone number</th>
             <th scope="col">Procedure</th>
             <th scope="col">Status</th>
-            <th scope="col">Zatwierdź</th>
+            <th scope="col">Accept</th>
             <th scope="col">#</th>
           </tr>
         </thead>
@@ -76,6 +76,16 @@
                 <td>{{$customer->phone_number}}</td>
                 <td>{{$procedure->name}}</td>
                 <td>{{$customer->status}}</td>
+                @if ($customer->status === "pending")
+                <td><form action="/visits/{{$customer->id}}" method="POST">
+                    @csrf
+                    @method("PUT")
+                    <button>Accept</button>
+                </form>
+                </td>
+                @else
+                <td></td>
+                @endif
               </tr>
             @endforeach
         @endforeach
