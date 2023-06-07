@@ -43,4 +43,8 @@ class AppointmentController extends Controller
         $customer->update();
         return redirect("/visits");
     }
+    public function destroy(Customer $customer){
+        $customer->delete();
+        return redirect("/visits");
+    }
 }

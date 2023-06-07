@@ -26,5 +26,6 @@ Route::get('/appointments', [AppointmentController::class, 'create']);
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::put('/visits/{customer}', [AppointmentController::class, 'update']);
+Route::delete('/visits/{customer}', [AppointmentController::class, 'destroy']);
 Route::get('/visits',[AppointmentController::class, 'index']);
 Route::post('/appointments', [AppointmentController::class, 'store']);
