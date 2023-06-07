@@ -62,19 +62,20 @@
             <th scope="col">Email</th>
             <th scope="col">Phone number</th>
             <th scope="col">Procedure</th>
-            <th scope="col">Clinic</th>
-            <th scope="col">Price</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($appointments as $appointment)
-          <tr>
-            <th scope="row">1</th>
-            <td>{{$appointment->name}}</td>
-            <td>{{$appointment->last_name}}</td>
-            <td>{{$appointment->email}}</td>
-            <td>{{$appointment->phone_number}}</td>
-          </tr>
+        @foreach($procedures as $procedure)
+            @foreach ($procedure->customers as $customer)
+            <tr>
+                <th scope="row">1</th>
+                <td>{{$customer->name}}</td>
+                <td>{{$customer->last_name}}</td>
+                <td>{{$customer->email}}</td>
+                <td>{{$customer->phone_number}}</td>
+                <td>{{$procedure->name}}</td>
+              </tr>
+            @endforeach
         @endforeach
         </tbody>
       </table>
