@@ -29,6 +29,7 @@ class AppointmentController extends Controller
             $customer->phone_number = $validData['phone_number'];
             $customer->procedure_id = $validData['procedure'];
             $customer->procedure_price = $procedure->price;
+            $customer->status = "pending";
             $customer->save();
             return redirect('/appointments');
     }

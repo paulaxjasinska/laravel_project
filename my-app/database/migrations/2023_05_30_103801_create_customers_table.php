@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('phone_number')->unique();
+            $table->string('email');
+            $table->string('phone_number');
+            $table->string('status');
             $table->foreignId('procedure_id')->constrained('procedures');
             $table->decimal('procedure_price');
             $table->timestamps();

@@ -56,24 +56,26 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone number</th>
             <th scope="col">Procedure</th>
+            <th scope="col">Status</th>
+            <th scope="col">Zatwierdź</th>
+            <th scope="col">#</th>
           </tr>
         </thead>
         <tbody>
         @foreach($procedures as $procedure)
             @foreach ($procedure->customers as $customer)
             <tr>
-                <th scope="row">1</th>
                 <td>{{$customer->name}}</td>
                 <td>{{$customer->last_name}}</td>
                 <td>{{$customer->email}}</td>
                 <td>{{$customer->phone_number}}</td>
                 <td>{{$procedure->name}}</td>
+                <td>{{$customer->status}}</td>
               </tr>
             @endforeach
         @endforeach
