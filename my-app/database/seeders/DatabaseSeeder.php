@@ -38,18 +38,6 @@ class DatabaseSeeder extends Seeder
                 $customer->procedure_price = $customer->procedure->price;
                 $customer->save();
             }
-            //tworzenie administratora
-            User::create(['name' => 'admin',
-            'last_name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'phone_number' => '000-000-000',
-            'date_employment' => now(),
-            'renumeration' => 0.00,
-            'password' => bcrypt('admin'),
-            'role' =>'admin',
-            'clinic_id' => null,
-            ]);
-
         }
     }
 
