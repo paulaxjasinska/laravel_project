@@ -14,17 +14,13 @@ class UserController extends Controller
         $formFields = $request->validate([
             'email' => ['required', 'email'],
             'password' => 'required'
-        ], [
-            'email.required' => 'Pole e-mail jest wymagane.',
-            'email.email' => 'Pole e-mail musi być poprawnym adresem e-mail.',
-            'password.required' => 'Pole hasło jest wymagane.',
         ]);
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
             return redirect("/");
         }else
         {
-            return back()->withErrors(['email' => 'Błędne dane'])->onlyInput('email');
+            return back()->withErrors(['email' => 'Invalid credintials'])->onlyInput('email');
         }
     }
     public function logout(Request $request) {

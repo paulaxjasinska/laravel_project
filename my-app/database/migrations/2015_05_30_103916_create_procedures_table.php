@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price');
-            $table->foreignId('clinic_id')->nullable()->constrained('clinics');
+            $table->foreignId('clinic_id')->nullable()->constrained('clinics')->onDelete('cascade');;
             $table->timestamps();
         });
     }

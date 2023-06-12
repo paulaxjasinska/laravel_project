@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('status');
-            $table->foreignId('procedure_id')->constrained('procedures');
+            $table->foreignId('procedure_id')->constrained('procedures')->onDelete('cascade');;
             $table->decimal('procedure_price');
             $table->timestamps();
         });

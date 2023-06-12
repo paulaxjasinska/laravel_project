@@ -11,9 +11,34 @@ class ClinicFactory extends Factory
 
     public function definition()
     {
-        $clinicName = strtolower($this->faker->word);
+        $clinicNames = [
+            'Beauty Med Clinic',
+            'Aesthetic Center',
+            'Cosmetic Surgery Clinic',
+            'Rejuvenation Institute',
+            'Glamour Med Spa',
+            'Elegant Plastic Surgery',
+            'Youthful Image Clinic',
+            'Sculpture Aesthetics',
+            'Renewal Wellness Center',
+            'Harmony Plastic Surgery',
+            'Radiant Skin Clinic',
+            'DreamBody Clinic',
+            'Revive Beauty Institute',
+            'Perfect Contours Center',
+            'Elite Rejuvenation Clinic',
+            'Aesthetica Med Group',
+            'Natural Beauty Clinic',
+            'Timeless Appearance Center',
+            'Serene Med Spa',
+            'Flawless Skin Institute'
+        ];
+
+        $clinicName = $this->faker->randomElement($clinicNames);
+        $clinicNameSlug = strtolower(str_replace(' ', '', $clinicName));
         $domain = 'gmail.com';
-        $uniqueFakeEmail = "{$clinicName}" . "@{$domain}";
+        $uniqueFakeEmail = "{$clinicNameSlug}@{$domain}";
+
         return [
             'name' => $clinicName,
             'city' => $this->faker->city,

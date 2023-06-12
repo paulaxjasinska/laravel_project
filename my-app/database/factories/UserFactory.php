@@ -3,9 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Clinic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Clinic;
 
 class UserFactory extends Factory
 {
@@ -13,19 +13,35 @@ class UserFactory extends Factory
 
     public function definition()
     {
-        $lastName = strtolower($this->faker->lastName);
+        $firstNames = [
+            'Alan', 'Joe', 'Emily', 'Michael', 'Olivia',
+            'Sophia', 'William', 'Ava', 'James', 'Emma',
+            'Daniel', 'Mia', 'Ethan', 'Isabella', 'Benjamin',
+            'Charlotte', 'David', 'Abigail', 'Alexander', 'Grace'
+        ];
+
+        $lastNames = [
+            'Smith', 'Doe', 'Johnson', 'Brown', 'Davis',
+            'Wilson', 'Miller', 'Thomas', 'Jackson', 'White',
+            'Harris', 'Martinez', 'Clark', 'Lewis', 'Lee',
+            'Anderson', 'Thompson', 'Garcia', 'Robinson', 'Taylor'
+        ];
+        $firstName = $this->faker->randomElement($firstNames);
+        $lastName = $this->faker->randomElement($lastNames);
+        $lastNameLower = strtolower($lastName);
         $domain = 'gmail.com';
-        $uniqueFakeEmail = "{$lastName}" . $this->faker->randomNumber() . "@{$domain}";
+        $uniqueFakeEmail = "{$lastNameLower}" . $this->faker->numberBetween(0, 999) . "@{$domain}";
         $startDate = '2007-01-01';
         $endDate = '2022-12-31';
         $dateEmployment = $this->faker->dateTimeBetween($startDate, $endDate)->format('Y-m-d');
+
         return [
-            'name' => $this->faker->firstName,
+            'name' => $firstName,
             'last_name' => $lastName,
             'email' => $uniqueFakeEmail,
             'phone_number' => $this->faker->regexify('\d{3}-\d{3}-\d{3}'),
             'date_employment' => $dateEmployment,
-            'renumeration' => $this->faker->randomFloat(2, 0, 100),
+            'renumeration' => $this->faker->randomFloat(2, 1500, 5000),
             'password' => bcrypt('doktor1234'),
             'role' =>'doctor',
             'clinic_id' => Clinic::factory(),
