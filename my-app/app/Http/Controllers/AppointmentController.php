@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Procedure;
 use App\Models\Customer;
+use Laracasts\Flash\Flash;
 
 class AppointmentController extends Controller
 {
@@ -30,8 +31,10 @@ class AppointmentController extends Controller
             $customer->procedure_price = $procedure->price;
             $customer->status = "pending";
             $customer->save();
+            Flash::success('Appointment was created');
             return redirect('/appointments');
     }
+
     public function index(){
         $user = auth()->user();
         $procedures = $user->clinic->procedures;
